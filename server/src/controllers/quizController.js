@@ -153,6 +153,9 @@ export default {
         await Score.create({
           userId,
           score: totalPoints,
+          state,
+          category,
+          difficulty,
           date: new Date()
         });
         console.log('Score saved to MongoDB');
@@ -464,6 +467,21 @@ export default {
     } catch (error) {
       console.error('Get all results error:', error);
       return res.status(500).json({ error: 'Failed to get all results', details: error.message });
+    }
+  },
+
+  // GET /api/quiz/history
+  async getHistory(req, res) {
+    try {
+      const userId = req.userId;
+      if (!userId) {
+        return res.status(401).json({ error: 'Not authenticated' });
+      }
+      const history = await UserAnswer.find({ userId }).sort({ submittedAt: -1 });
+      return res.json({ history });
+    } catch (error) {
+      console.error('Get history error:', error);
+      return res.status(500).json({ error: 'Failed to get history', details: error.message });
     }
   }
 };

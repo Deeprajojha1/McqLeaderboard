@@ -4,6 +4,9 @@ import mongoose from 'mongoose';
 const scoreSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   score: Number,
+  state: String,
+  category: String,
+  difficulty: String,
   date: { type: Date, default: Date.now }
 });
 

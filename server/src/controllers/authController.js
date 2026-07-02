@@ -69,11 +69,11 @@ export default {
 
   // POST /api/auth/login
   async login(req, res) {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     try {
       // Find user by username
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ email });
 
       if (!user) {
         return res.status(401).json({ error: 'Invalid credentials' });

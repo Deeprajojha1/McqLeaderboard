@@ -1,0 +1,127 @@
+/* ================================================
+   App-level Custom Styles with Animations
+   ================================================ */
+
+/* Page wrapper entrance animations */
+.page-enter {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.page-enter-fast {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Section reveal animation */
+.section-reveal {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.section-reveal:nth-child(1) { animation-delay: 0.1s; }
+.section-reveal:nth-child(2) { animation-delay: 0.2s; }
+.section-reveal:nth-child(3) { animation-delay: 0.3s; }
+
+/* Card hover lift effect */
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.dark .card-lift:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Pulse dot for live indicators */
+.live-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulseGlow 1.5s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+}
+
+/* Gradient text animation */
+.gradient-text-animate {
+  background: linear-gradient(
+    135deg,
+    var(--color-brand-500) 0%,
+    var(--color-brand-400) 25%,
+    var(--color-brand-600) 50%,
+    var(--color-brand-400) 75%,
+    var(--color-brand-500) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Stat counter animation container */
+.stat-number {
+  display: inline-block;
+  animation: countUp 0.5s ease-out;
+}
+
+/* Loading pulse for skeleton states */
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Quiz option button - correct/wrong feedback animation */
+.option-correct {
+  animation: correctPulse 0.5s ease-out;
+}
+
+@keyframes correctPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+/* Badge bounce on hover */
+.badge-bounce {
+  transition: transform 0.2s ease;
+}
+
+.badge-bounce:hover {
+  transform: scale(1.1);
+}
+
+/* Staggered grid children */
+.grid-stagger > * {
+  opacity: 0;
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.grid-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.grid-stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.grid-stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.grid-stagger > *:nth-child(4) { animation-delay: 0.2s; }
+.grid-stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.grid-stagger > *:nth-child(6) { animation-delay: 0.3s; }
+
+/* Floating particles background (for hero) */
+.particles-bg {
+  overflow: hidden;
+}
+
+/* Scroll reveal helper */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

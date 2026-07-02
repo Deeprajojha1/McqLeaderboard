@@ -17,4 +17,7 @@ router.get('/result/:questionId', authMiddleware, quizController.getQuestionResu
 // Get all question results with user answers
 router.get('/results/all', authMiddleware, quizController.getAllResults);
 
+// Get user quiz attempt history
+router.get('/history', authMiddleware, quizController.getHistory);
+
 export default router;
