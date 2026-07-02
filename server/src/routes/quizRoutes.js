@@ -14,4 +14,7 @@ router.post('/submit', authMiddleware, quizController.submitAnswers);
 // Get specific question result (with correct answer and explanation)
 router.get('/result/:questionId', authMiddleware, quizController.getQuestionResult);
 
+// Get all question results with user answers
+router.get('/results/all', authMiddleware, quizController.getAllResults);
+
 export default router;
